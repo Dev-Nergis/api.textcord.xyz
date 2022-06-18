@@ -1,0 +1,21 @@
+<head>
+<title>File Upload Test</title>
+</head>
+<form>
+  <!-- Can be multiple files -->
+  <input type="file" name="files" />
+  <input type="submit" value="Submit" />
+</form>
+
+<script type="text/javascript">
+  const form = document.querySelector('form');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    await fetch('/api/upload', {
+      method: 'post',
+      body: new FormData(e.target)
+    });
+  });
+</script>
